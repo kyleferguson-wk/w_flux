@@ -13,6 +13,8 @@ authors:
 homepage: https://github.com/Workiva/w_flux
 
 dependencies:
+  barback: ^0.15.2
+  code_builder: ^1.0.1
   meta: ^1.0.4
   react: ^3.0.0
   w_common: ^1.0.0
