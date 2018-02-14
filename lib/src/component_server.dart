@@ -18,7 +18,7 @@ import 'package:w_flux/src/component_common.dart';
 import 'package:w_flux/src/store.dart';
 
 /// FluxComponents are responsible for rendering application views and turning
-/// user interactions and events into [Action]s. FluxComponents can use data
+/// user interactions and events into `Action`s. FluxComponents can use data
 /// from one or many [Store] instances to define the resulting component.
 ///
 /// This FluxComponent, intended for use on the server, does not depend on

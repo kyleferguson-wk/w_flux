@@ -20,7 +20,7 @@ import 'package:meta/meta.dart';
 import 'package:w_common/disposable.dart' show Disposable;
 import 'package:w_flux/src/action.dart';
 
-typedef StoreHandler(Store event);
+typedef dynamic StoreHandler(Store event);
 
 /// A `Store` is a repository and manager of app state. This class should be
 /// extended to fit the needs of your application and its data. The number and
@@ -36,7 +36,7 @@ typedef StoreHandler(Store event);
 /// listened to. Whenever a `Store`'s data is mutated, the `trigger` method is
 /// used to tell all registered listeners that updated data is available.
 ///
-/// In a typical application using `w_flux`, a [FluxComponent] listens to
+/// In a typical application using `w_flux`, a `FluxComponent` listens to
 /// `Store`s, triggering re-rendering of the UI elements based on the updated
 /// `Store` data.
 class Store extends Stream<Store> with Disposable {
@@ -122,7 +122,7 @@ class Store extends Stream<Store> with Disposable {
   ///
   /// If the `Store` is disposing or has been disposed, this method has no effect.
   void trigger() {
-    if (isDisposedOrDisposing) return;
+    if (isOrWillBeDisposed) return;
 
     _streamController.add(this);
   }
@@ -135,7 +135,7 @@ class Store extends Stream<Store> with Disposable {
   /// called until that future has resolved.
   ///
   /// If the `Store` has been disposed, this method throws a [StateError].
-  triggerOnAction(Action action, [void onAction(payload)]) {
+  void triggerOnAction(Action action, [void onAction(dynamic payload)]) {
     if (isDisposed) {
       throw new StateError('Store of type $runtimeType has been disposed');
     }

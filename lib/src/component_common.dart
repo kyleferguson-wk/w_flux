@@ -24,15 +24,15 @@ import 'package:w_flux/src/constants.dart' show v3Deprecation;
 import 'package:w_flux/src/store.dart';
 
 /// FluxComponents are responsible for rendering application views and turning
-/// user interactions and events into [Action]s. FluxComponents can use data
+/// user interactions and events into `Action`s. FluxComponents can use data
 /// from one or many [Store] instances to define the resulting component.
 abstract class FluxComponentCommon<ActionsT, StoresT> extends react.Component
     with Disposable {
-  /// The class instance defined by [ActionsT] that holds all [Action]s that
+  /// The class instance defined by [ActionsT] that holds all `Action`s that
   /// this component needs access to.
   ///
   /// There is no strict rule on the [ActionsT] type. Depending on application
-  /// structure, there may be [Action]s available directly on this object, or
+  /// structure, there may be `Action`s available directly on this object, or
   /// this object may represent a hierarchy of actions.
   ActionsT get actions => this.props['actions'] as ActionsT;
 

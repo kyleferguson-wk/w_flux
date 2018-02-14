@@ -14,6 +14,7 @@
 
 library w_flux.example.random_color;
 
+import 'dart:async';
 import 'dart:html';
 import 'dart:math';
 
@@ -23,7 +24,7 @@ import 'package:react/react_client.dart' as react_client;
 
 import 'package:w_flux/w_flux.dart';
 
-main() async {
+Future<Null> main() async {
   // initialize action, stores, and components
   RandomColorActions actions = new RandomColorActions();
   RandomColorStore store = new RandomColorStore(actions);
@@ -57,12 +58,14 @@ class RandomColorStore extends Store {
   }
 }
 
+// ignore: type_annotate_public_apis
 var RandomColorComponent =
     react.registerComponent(() => new _RandomColorComponent());
 
 class _RandomColorComponent
     extends FluxComponent<RandomColorActions, RandomColorStore> {
-  render() {
+  @override
+  dynamic render() {
     return react.div({
       'style': {
         'padding': '50px',

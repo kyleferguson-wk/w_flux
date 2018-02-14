@@ -186,9 +186,11 @@ class TestStores {
 class TestDefaultComponent extends FluxComponent {
   int numberOfRedraws = 0;
 
-  render() => react.div({});
+  @override
+  dynamic render() => react.div({});
 
-  redraw([callback()]) {
+  @override
+  void redraw([callback()]) {
     numberOfRedraws += 1;
   }
 }
@@ -196,11 +198,13 @@ class TestDefaultComponent extends FluxComponent {
 class TestStoreHandlersComponent extends FluxComponent<TestActions, TestStore> {
   int numberOfHandlerCalls = 0;
 
-  render() => react.div({});
+  @override
+  dynamic render() => react.div({});
 
-  getStoreHandlers() => {store: increment};
+  @override
+  Map<Store, StoreHandler> getStoreHandlers() => {store: increment};
 
-  increment(Store _) {
+  void increment(Store _) {
     numberOfHandlerCalls += 1;
   }
 }
@@ -208,11 +212,14 @@ class TestStoreHandlersComponent extends FluxComponent<TestActions, TestStore> {
 class TestRedrawOnComponent extends FluxComponent<TestActions, TestStores> {
   int numberOfRedraws = 0;
 
-  render() => react.div({});
+  @override
+  dynamic render() => react.div({});
 
-  redrawOn() => [store.store1, store.store2];
+  @override
+  List<Store> redrawOn() => [store.store1, store.store2];
 
-  redraw([callback()]) {
+  @override
+  void redraw([callback()]) {
     numberOfRedraws += 1;
   }
 }
@@ -221,17 +228,21 @@ class TestHandlerPrecedence extends FluxComponent<TestActions, TestStores> {
   int numberOfRedraws = 0;
   int numberOfHandlerCalls = 0;
 
-  render() => react.div({});
+  @override
+  dynamic render() => react.div({});
 
-  redrawOn() => [store.store1, store.store2];
+  @override
+  List<Store> redrawOn() => [store.store1, store.store2];
 
-  getStoreHandlers() => {store.store1: increment};
+  @override
+  Map<Store, StoreHandler> getStoreHandlers() => {store.store1: increment};
 
-  increment(Store _) {
+  void increment(Store _) {
     numberOfHandlerCalls += 1;
   }
 
-  redraw([callback()]) {
+  @override
+  void redraw([callback()]) {
     numberOfRedraws += 1;
   }
 }

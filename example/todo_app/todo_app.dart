@@ -14,16 +14,17 @@
 
 library w_flux.example.todo_app;
 
+import 'dart:async';
 import 'dart:html';
 
 import 'package:react/react_dom.dart' as react_dom;
 import 'package:react/react_client.dart' as react_client;
 
 import 'actions.dart';
-import 'store.dart';
 import 'components/todo_app_component.dart';
+import 'store.dart';
 
-main() async {
+Future<Null> main() async {
   // initialize action, stores, and components
   ToDoActions actions = new ToDoActions();
   ToDoStore store = new ToDoStore(actions);

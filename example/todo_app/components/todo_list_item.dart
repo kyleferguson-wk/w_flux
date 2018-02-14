@@ -18,15 +18,18 @@ import 'package:react/react.dart' as react;
 
 import '../store.dart';
 
+// ignore: type_annotate_public_apis
 var TodoListItem = react.registerComponent(() => new _TodoListItem());
 
 class _TodoListItem extends react.Component {
   Todo get todo => props['todo'];
   Function get onClick => props['onClick'];
 
-  getDefaultProps() => {'todo': null};
+  @override
+  Map getDefaultProps() => {'todo': null};
 
-  render() {
+  @override
+  dynamic render() {
     String className =
         todo.completed ? 'list-group-item completed' : 'list-group-item';
     return react.span({

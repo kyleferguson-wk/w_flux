@@ -32,9 +32,9 @@ class _RedrawScheduler implements Function {
 
         if (callbacks.isNotEmpty) {
           chainedCallbacks = () {
-            callbacks.forEach((callback) {
+            for (var callback in callbacks) {
               callback();
-            });
+            }
           };
         }
 
@@ -46,8 +46,8 @@ class _RedrawScheduler implements Function {
 
 _RedrawScheduler _scheduleRedraw = new _RedrawScheduler();
 
-/// A mixin that overrides the [Component.redraw] method of a React
-/// [Component] (including a [FluxComponent]) and prevents the component
+/// A mixin that overrides the `redraw` method of a React
+/// [Component] (including a `FluxComponent`) and prevents the component
 /// from being redrawn more than once per animation frame.
 ///
 /// Example:

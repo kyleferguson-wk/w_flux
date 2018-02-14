@@ -17,19 +17,21 @@ library w_flux.example.todo_app.components.todo_app_component;
 import 'package:react/react.dart' as react;
 import 'package:w_flux/w_flux.dart';
 
-import 'new_todo_input.dart';
-import 'todo_list_item.dart';
 import '../actions.dart';
 import '../store.dart';
+import 'new_todo_input.dart';
+import 'todo_list_item.dart';
 
+// ignore: type_annotate_public_apis
 var ToDoAppComponent = react.registerComponent(() => new _ToDoAppComponent());
 
 class _ToDoAppComponent extends FluxComponent<ToDoActions, ToDoStore> {
-  render() {
+  @override
+  dynamic render() {
     List todoListItems = [];
-    store.todos.forEach((Todo todo) {
+    for (var todo in store.todos) {
       todoListItems.add(TodoListItem({'todo': todo, 'onClick': _completeTodo}));
-    });
+    }
     var todoList = react.div({'className': 'list-group'}, todoListItems);
 
     var pageHeader =

@@ -87,7 +87,7 @@ void main() {
         () {
       Action _action = new Action();
       bool methodCalled = false;
-      syncCallback(_) {
+      void syncCallback(_) {
         methodCalled = true;
       }
 
@@ -104,7 +104,7 @@ void main() {
         () {
       Action _action = new Action();
       bool afterTimer = false;
-      asyncCallback(_) async {
+      Future<Null> asyncCallback(_) async {
         await new Future.delayed(new Duration(milliseconds: 30));
         afterTimer = true;
       }

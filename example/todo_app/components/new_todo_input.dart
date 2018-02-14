@@ -16,15 +16,18 @@ library w_flux.example.todo_app.components.new_todo_input;
 
 import 'package:react/react.dart' as react;
 
+// ignore: type_annotate_public_apis
 var NewTodoInput = react.registerComponent(() => new _NewTodoInput());
 
 class _NewTodoInput extends react.Component {
   String get value => state['value'];
   Function get onSubmit => props['onSubmit'];
 
-  getInitialState() => {'value': ''};
+  @override
+  Map getInitialState() => {'value': ''};
 
-  render() {
+  @override
+  dynamic render() {
     return react.form(
         {'onSubmit': _onSubmit},
         react.input({
