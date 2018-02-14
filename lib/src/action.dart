@@ -89,9 +89,13 @@ class Action<T> extends Object with Disposable implements Function {
   }
 
   /// Actions are only deemed equivalent if they are the exact same Object
+  @override
   bool operator ==(Object other) {
     return identical(this, other);
   }
+
+  @override
+  int get hashCode => this.hashCode;
 }
 
 /// A subscription used to cancel registered listeners to an [Action].
